@@ -1,3 +1,3 @@
 # 😔 Vortex-X 😔
 
-#### 🥺 BOT IS STILL UNDER CONSTRUCT 🥺
+#### 🚧 BOT IS STILL UNDER CONSTRUCTION 🚧 
