@@ -1,13 +1,13 @@
-
+{
   "name": "Vortex-X",
   "version": "1.0.0",
   "description": "A WhatsApp bot created using Node.js",
   "main": "index.js",
   "scripts": {
-  "start": "pm2 start index.js --deep-monitoring --attach --name Vortex-X",
-  "stop": "pm2 stop Vortex-X",
-  "restart": "pm2 restart Vortex-X"
-},
+    "start": "pm2 start index.js --deep-monitoring --attach --name vortex",
+    "stop": "pm2 stop vortex",
+    "restart": "pm2 restart vortex"
+  },
   "dependencies": {
     "@whiskeysockets/baileys": "6.6.0",
     "@adiwajshing/keyed-db": "^0.2.4",
