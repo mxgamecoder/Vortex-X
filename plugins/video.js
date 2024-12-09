@@ -17,7 +17,7 @@ const data = search.videos[0];
 const url = data.url
 
 let desc = `
-🥺 *BetaBot VIDEO DOWNLOADER* 🥺
+🥺 *Vortex-X VIDEO DOWNLOADER* 🥺
 
 title: ${data.title}
 description: ${data.description}
@@ -25,7 +25,7 @@ time: ${data.timestamp}
 ago: ${data.ago}
 views: ${data.views}
 
-MADE BY BetaBot 🤗
+MADE BY Vortex-X 🤗
 `
 await conn.sendMessage(from,{image:{url: data.thumbnail},caption:desc},{quoted:mek});
 
