@@ -51,7 +51,7 @@ ${menu.convert}
 
 POWERED BY MX-GΔMΞCØDΞR 😞
 `
-await conn.sendMessage(from,{text:madeMenu},{quoted:mek})
+await conn.sendMessage(from,{image:{url:"https://i.imgur.com/UJ605NL.jpeg"},caption:madeMenu},{quoted:mek})
 
 }catch(e){
 console.log(e)
