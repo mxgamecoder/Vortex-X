@@ -9,5 +9,5 @@ SESSION_ID: process.env.SESSION_ID || "lqEFQbgL#8LD-Ea5HfzdwzVfv7s_Ya0TiffN-r7cJ
 ALIVE_IMG: process.env.ALIVE_IMG || "https://i.imgur.com/YFtmhOw.jpeg",
 ALIVE_MSG: process.env.ALIVE_MSG || "Hello 🤗 Vortex-X is alive don't fear, I am alive!!!",
 AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "true",
-MODE: process.env.MODE || "private"
+MODE: process.env.MODE || "private",
 };
