@@ -37,7 +37,7 @@ let downloadUrl = down.dl_url
 // send video + document message 
 
 await conn.sendMessage(from,{video: {url:downloadUrl},mimetype:"video/mp4"},{quoted:mek})
-await conn.sendMessage(from,{document: {url:downloadUrl},mimetype:"video/mp4",fileName:data.title + ".mp4",caption:"MADE BY BetaBot 🥺"},{quoted:mek})
+await conn.sendMessage(from,{document: {url:downloadUrl},mimetype:"video/mp4",fileName:data.title + ".mp4",caption:"MADE BY Vortex-X 🥺"},{quoted:mek})
 
 
 
