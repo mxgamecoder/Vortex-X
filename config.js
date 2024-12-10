@@ -12,5 +12,4 @@ ALIVE_MSG: process.env.ALIVE_MSG || "Hello 🤗 Vortex-X is alive 🙂, I am ali
 AUTO_READ_STATUS: process.env.AUTO_READ_STATUS || "false",
 MODE: process.env.MODE || "private",
 OMDB_API_KEY: process.env.OMDB_API_KEY || "76cb7f39", // omdbapi.com
-ownerNumber: '2349021506036@s.whatsapp.com',
 };
