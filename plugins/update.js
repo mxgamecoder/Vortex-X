@@ -1,5 +1,4 @@
 const { exec } = require('child_process');
-const fs = require('fs');
 const { cmd } = require('../command');
 
 cmd({
@@ -11,13 +10,12 @@ cmd({
     filename: __filename
 }, async (conn, mek, m, { from, reply }) => {
     try {
-        const repoUrl = 'https://github.com/mxgamecoder/Vortex-X.git';
-        const targetFolder = './main/plugins'; // Set target directory
+        const repoPath = './main'; // Path to your GitHub repository on the server
 
         console.log("Running .update command...");
-        
+
         // Pull repo changes
-        exec(`git -C ${targetFolder} pull`, (err, stdout, stderr) => {
+        exec(`git -C ${repoPath} pull`, (err, stdout, stderr) => {
             if (err) {
                 console.error("Error during Git Pull: ", stderr);
                 reply(`Failed to pull updates: ${stderr}`);
@@ -28,7 +26,7 @@ cmd({
                 reply('*✅ Vortex-X Update completed successfully, restarting bot...*');
 
                 // Restart the process
-                process.exit(0);
+                process.exit(0); // Ensure PM2 or similar handles restart
             }
         });
     } catch (error) {
