@@ -2,7 +2,7 @@ const { cmd } = require('../command');
 const axios = require('axios');
 
 // Directly insert your GPT-4o API Key here
-const openAIAPIKey = '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';
+const openAIAPIKey = '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';
 
 cmd({
     pattern: "ai",
