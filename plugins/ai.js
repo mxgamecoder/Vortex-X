@@ -2,7 +2,7 @@ const { cmd } = require('../command');
 const axios = require('axios'); // Using Axios for HTTP requests
 
 // Directly insert the API Key here (not recommended for production)
-const openAIAPIKey = 'your_openai_api_key_here'; // Replace with your actual OpenAI API key
+const openAIAPIKey = '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'; // Replace with your actual OpenAI API key
 
 cmd({
     pattern: "ai",
