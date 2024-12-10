@@ -15,12 +15,13 @@ cmd({
     console.log("Running .update command...");
     try {
         const repoUrl = 'https://github.com/mxgamecoder/Vortex-X.git';
-        
+        const branch = 'main'; // Replace 'main' with your repo's branch name if it's different
+
         // Check if the repository already exists
         if (!fs.existsSync('./.git')) {
             console.log("Repository doesn't exist. Cloning...");
             await new Promise((resolve, reject) => {
-                exec(`git clone ${repoUrl}`, (err, stdout, stderr) => {
+                exec(`git clone -b ${branch} ${repoUrl}`, (err, stdout, stderr) => {
                     if (err) {
                         console.error("Git clone error:", stderr);
                         reject(`Git clone failed: ${stderr}`);
@@ -33,7 +34,7 @@ cmd({
         } else {
             console.log("Repository exists. Pulling latest changes...");
             await new Promise((resolve, reject) => {
-                exec('git pull', (err, stdout, stderr) => {
+                exec(`git pull origin ${branch}`, (err, stdout, stderr) => {
                     if (err) {
                         console.error("Git pull error:", stderr);
                         reject(`Git pull failed: ${stderr}`);
