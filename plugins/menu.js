@@ -16,7 +16,9 @@ download: '',
 group: '',
 owner: '',
 convert: '',
-search: ''
+search: '',
+fun: '',
+nsfw: ''
 };
 
 for (let i = 0; i < commands.length; i++) {
@@ -46,9 +48,17 @@ ${menu.owner}
 
 ${menu.search}
 
-> *Vortex-X CONVERT MENU* 🙂
+> *Vortex-X CONVERT MENU* 😕
 
 ${menu.convert}
+
+> *Vortex-X fun MENU* 😲
+
+${menu.fun}
+
+> *Vortex-X NSFW MENU* 🙂
+
+${menu.nsfw}
 
 POWERED BY MX-GΔMΞCØDΞR 😞
 `
