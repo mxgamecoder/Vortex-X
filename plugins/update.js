@@ -1,5 +1,5 @@
 const config = require('../config');
-let fs = require('fs');
+const fs = require('fs');
 const { exec } = require('child_process');
 const { cmd } = require('../command');
 
