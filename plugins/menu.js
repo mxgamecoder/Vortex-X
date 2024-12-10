@@ -52,7 +52,7 @@ ${menu.convert}
 
 POWERED BY MX-GΔMΞCØDΞR 😞
 `
-await conn.sendMessage(from,{image:{url:config.ALIVE_IMG},caption:madeMenu},{quoted:mek})
+await conn.sendMessage(from,{image:{url:"https://i.imgur.com/uKVe8kQ.jpeg"},caption:madeMenu},{quoted:mek})
 
 }catch(e){
 console.log(e)
