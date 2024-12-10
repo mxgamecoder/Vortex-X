@@ -15,16 +15,17 @@ cmd({
     console.log("Running .update command...");
     try {
         const repoUrl = 'https://github.com/mxgamecoder/Vortex-X.git';
-        const branch = 'main'; // Replace 'main' with your repo's branch name if it's different
+        const repoDir = './repo'; // Use a directory for the repository clone
+        const branch = 'main'; // Replace with your branch name if it's different.
 
-        // Check if the repository already exists
-        if (!fs.existsSync('./.git')) {
-            console.log("Repository doesn't exist. Cloning...");
+        // Clone only if the repo isn't already present or initialized properly
+        if (!fs.existsSync(repoDir)) {
+            console.log("Cloning repository...");
             await new Promise((resolve, reject) => {
-                exec(`git clone -b ${branch} ${repoUrl}`, (err, stdout, stderr) => {
+                exec(`git clone -b ${branch} ${repoUrl} ${repoDir}`, (err, stdout, stderr) => {
                     if (err) {
-                        console.error("Git clone error:", stderr);
-                        reject(`Git clone failed: ${stderr}`);
+                        console.error("Error while cloning repository:", stderr);
+                        reject(`Failed to clone repo: ${stderr}`);
                     } else {
                         console.log("Repository cloned successfully.");
                         resolve(stdout);
@@ -32,12 +33,12 @@ cmd({
                 });
             });
         } else {
-            console.log("Repository exists. Pulling latest changes...");
+            console.log("Updating repository...");
             await new Promise((resolve, reject) => {
-                exec(`git pull origin ${branch}`, (err, stdout, stderr) => {
+                exec(`git -C ${repoDir} pull origin ${branch}`, (err, stdout, stderr) => {
                     if (err) {
-                        console.error("Git pull error:", stderr);
-                        reject(`Git pull failed: ${stderr}`);
+                        console.error("Error while pulling updates:", stderr);
+                        reject(`Failed to pull updates: ${stderr}`);
                     } else {
                         console.log("Repository updated successfully.");
                         resolve(stdout);
@@ -48,7 +49,7 @@ cmd({
 
         await conn.sendMessage(from, { text: '*✅ Vortex-X Update completed successfully!*' }, { quoted: mek });
     } catch (error) {
-        console.error("Update error:", error.message);
+        console.error("Update failed with error:", error.message);
         reply(`*Error during update:* ${error.message}`);
     }
 });
