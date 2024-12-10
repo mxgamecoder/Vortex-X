@@ -1,14 +1,22 @@
-let handler = async (m, { conn }) => {
-  let who = m.quoted ? m.quoted.sender : m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-  let name = conn.getName(who)
-  conn.sendFile(m.chat, global.API('https://some-random-api.com', '/canvas/gay', {
-    avatar: await conn.profilePictureUrl(who, 'image').catch(_ => 'https://i.ibb.co/1ZxrXKJ/avatar-contact.jpg'), 
-  }), 'gay.png', `🏳️‍🌈  *Gay :* ${name}\n\n${mssg.gaytex}`, m)
-}
+const { cmd } = require('../command');
+const config = require('../config');
 
-handler.help = ['gay @user']
-handler.tags = ['fun']
-handler.command = /^(gay)/i
-handler.diamond = true
+cmd({
+    pattern: "owner",
+    react: "👤",
+    desc: "Owner only command.",
+    category: "owner",
+    filename: __filename
+}, async (conn, mek, m, { from, reply, sender }) => {
+    try {
+        // Check if the command sender is the owner
+        if (sender !== config.ownerNumber) {
+            return reply("*🚫 You are not authorized to use this command.*");
+        }
 
-export default handler
+        reply("*✅ Welcome, bot owner! You have access to this command.*");
+    } catch (error) {
+        console.error("Owner command error:", error);
+        reply("*❌ Failed to execute owner command.*");
+    }
+});
