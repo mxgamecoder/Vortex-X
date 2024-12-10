@@ -1,21 +1,48 @@
-const config = require('../config')
-const {cmd , commands} = require('../command')
-const { fetchJson } = require('../lib/functions')
+const { cmd } = require('../command');
+const axios = require('axios'); // Using Axios for HTTP requests
+
+// Directly insert the API Key here (not recommended for production)
+const openAIAPIKey = 'your_openai_api_key_here'; // Replace with your actual OpenAI API key
 
 cmd({
     pattern: "ai",
-    alias: ["gpt","bot"], 
+    alias: ["gpt", "bot"],
     react: "📑",
-    desc: "ai chat.",
+    desc: "AI Chat using GPT-3.5.",
     category: "search",
     filename: __filename
-},
-async(conn, mek, m,{from, quoted, body, isCmd, command, args, q, isGroup, sender, senderNumber, botNumber2, botNumber, pushname, isMe, isOwner, groupMetadata, groupName, participants, groupAdmins, isBotAdmins, isAdmins, reply}) => {
-try{
-let data = await fetchJson(`https://chatgptforprabath-md.vercel.app/api/gptv1?q=${q}`)
-return reply(`${data.data}`)
-}catch(e){
-console.log(e)
-reply(`${e}`)
-}
-})
+}, async (conn, mek, m, { from, quoted, body, q, reply }) => {
+    try {
+        if (!openAIAPIKey) {
+            return reply("🔑 No API key provided.");
+        }
+
+        const response = await axios.post(
+            'https://api.openai.com/v1/chat/completions',
+            {
+                model: "gpt-3.5-turbo",
+                messages: [
+                    { role: "system", content: "You are a helpful assistant." },
+                    { role: "user", content: q || body }
+                ],
+                max_tokens: 200
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${openAIAPIKey}`,
+                    'Content-Type': 'application/json',
+                },
+            }
+        );
+
+        if (response.data && response.data.choices && response.data.choices[0]) {
+            const replyText = response.data.choices[0].message.content;
+            return reply(replyText);
+        } else {
+            return reply("No response from AI model.");
+        }
+    } catch (error) {
+        console.error("Error calling OpenAI API:", error);
+        return reply("Failed to fetch response from AI.");
+    }
+});
