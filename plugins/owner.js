@@ -9,8 +9,11 @@ cmd({
     filename: __filename
 }, async (conn, mek, m, { from, reply, sender }) => {
     try {
-        // Check if the command sender is the owner
+        console.log("Sender ID received:", sender); // Log sender ID for debugging
+
+        // Compare the actual sender's ID
         if (sender !== config.ownerNumber) {
+            console.log("Expected owner number:", config.ownerNumber);
             return reply("*🚫 You are not authorized to use this Vortex-X command.*");
         }
 
